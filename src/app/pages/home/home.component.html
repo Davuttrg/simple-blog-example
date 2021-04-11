@@ -1,0 +1,23 @@
+<div class="__posts">
+
+    <div *ngFor="let section of sections">
+        <div class="__section-header">{{section.title |uppercase}}</div>
+        <div class="__section">
+            <app-post-card [posts]="section.posts"></app-post-card>
+        </div>
+    </div>
+</div>
+<div class="__authors">
+    <div class="__header">AUTHORS</div>
+    <ul>
+        <li *ngFor="let author of authors" [routerLink]="['author',author._id]">
+            <div class="__item">
+                <img [src]="author.profile_img" alt="">
+                <div>{{author.full_name}} </div>
+            </div>
+            <div class="__bio">
+                {{author.biographi}}
+            </div>
+        </li>
+    </ul>
+</div>

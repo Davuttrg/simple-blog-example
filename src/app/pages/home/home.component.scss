@@ -1,0 +1,64 @@
+:host {
+  display: flex;
+  .__posts {
+    width: 80%;
+    .__section-header {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.4rem;
+      padding-left: 0.4rem;
+      border-left: 3px solid;
+    }
+    .__section {
+      display: flex;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+  }
+  .__authors {
+    width: 20%;
+    height: 100%;
+    //  margin-top: 5rem;
+    //  margin: auto;
+    .__header {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.4rem;
+      padding-left: 0.4rem;
+      border-bottom: 3px solid;
+    }
+    ul {
+      padding: 0 1rem;
+      border-left: 1px solid #e8e8e8;
+      li {
+        margin-bottom: 3rem;
+        cursor: pointer;
+        .__item {
+          display: flex;
+          padding-bottom: 0.5rem;
+          img {
+            width: 75px;
+            height: 75px;
+            margin: 0 8px 5px 0;
+            border-radius: 3px;
+            object-fit: cover;
+          }
+          div {
+            align-self: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+          }
+        }
+        .__bio {
+          font-weight: 600;
+          font-size: 1rem;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}

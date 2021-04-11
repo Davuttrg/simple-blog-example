@@ -1,0 +1,42 @@
+.main {
+  padding: 30px;
+  .__container {
+    max-width: 1300px;
+    margin: auto;
+  }
+}
+.footer {
+  height: 10rem;
+  background: #f7f7f7;
+  position: relative;
+  .content {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    justify-content: space-evenly;
+    .social {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      a {
+        color: black;
+        i {
+          padding: 0 1rem;
+          font-size: 1.5rem;
+        }
+      }
+    }
+    .contact {
+      font-size: 1rem;
+      font-weight: 600;
+      a {
+        text-decoration: none;
+        color: gray;
+        padding-left: 0.5rem;
+      }
+    }
+  }
+}

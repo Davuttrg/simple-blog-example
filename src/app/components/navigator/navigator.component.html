@@ -1,0 +1,13 @@
+<div class="navbar" [style]=" homeSettings?.header ? { background: 'url(' + homeSettings.header + ')' } : '' ">
+
+    <div class="__nav">
+        <div class="__content">
+            <ul *ngIf="categoriesData$|async; let categories">
+                <li (click)="active_page='/'" [class.active]="active_page=='/'" [routerLink]="['/']">Home</li>
+                <li (click)="active_page=category._id" [class.active]="active_page==category._id"
+                    *ngFor="let category of categories" [routerLink]="['posts',category._id]">{{category.title |
+                    titlecase}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

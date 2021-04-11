@@ -1,0 +1,11 @@
+<div class="content">
+    <img [src]="author?.profile_img" alt="">
+    <div class="name">
+        {{author?.full_name}}
+    </div>
+    <div class="bio">
+        {{author?.biographi}}
+    </div>
+</div>
+
+<app-post-card [posts]="posts" [page]="'author'"></app-post-card>
