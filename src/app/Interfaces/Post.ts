@@ -9,6 +9,6 @@ export interface Post {
     created_at?: string;
     description?: string;
     header_img?: string;
-    tags?: Tag;
+    tags?: Tag[];
     title?: string;
 }

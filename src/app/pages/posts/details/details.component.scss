@@ -1,20 +1,36 @@
 :host {
   $weigt: 600;
   $mrgn: 0.8rem 0;
+  display: flex;
 
-  .content {
-    display: flex;
-    justify-content: space-evenly;
-  //  align-items: center;
-    .__text {
-      max-width: 70%;
-      .__container{
-          height: 19rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
+  .__left-side {
+    width: 80%;
+    .post_content {
+      padding-right: 2rem;
+      img{
+        width: 80%;
       }
-      .post_content {
+    }
+    .__text {
+      display: flex;
+      .__img {
+        width: 30%;
+        height: 18rem;
+        margin-bottom: 3rem;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 2%;
+        }
+      }
+      .__container {
+        height: 19rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 3rem;
+        width: 70%;
       }
       .__title {
         font-size: 1.6rem;
@@ -44,7 +60,7 @@
           color: white;
           background-color: #bdbdbd;
           margin: 0 0.5rem;
-          padding: 0 0.4rem;
+          padding: 0 0.4rem 0.2rem 0.4rem;
           border-radius: 10px;
         }
       }
@@ -63,17 +79,49 @@
       .__date {
         font-weight: 900;
         font-size: 0.7rem;
-        align-self: flex-end;
       }
     }
-    .__img {
-      width: 20rem;
-      height: 18rem;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 2%;
+  }
+}
+.__right-side {
+  width: 20%;
+  height: 100%;
+  .__header {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    padding-bottom: 0.4rem;
+    padding-left: 0.4rem;
+    border-bottom: 3px solid;
+  }
+  ul {
+    padding: 0 1rem;
+    border-left: 1px solid #e8e8e8;
+    li {
+      margin-bottom: 3rem;
+      cursor: pointer;
+      .__item {
+        display: flex;
+        padding-bottom: 0.5rem;
+        img {
+          width: 100%;
+          height: 12rem;
+          margin: 0 8px 5px 0;
+          border-radius: 3px;
+          object-fit: cover;
+        }
+        div {
+          align-self: center;
+          font-weight: 600;
+          font-size: 1.2rem;
+        }
+      }
+      .__title {
+        font-weight: 600;
+        font-size: 1rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
     }
   }

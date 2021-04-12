@@ -1,25 +1,38 @@
-<div class="content">
+<div class="__left-side">
     <div class="__text">
-      <div class="__container">
-        <div class="__title">{{post?.title}}</div>
-        <div class="__author">
-            <img [src]="post?.author.profile_img" alt="">
-            <div>
-                {{post?.author.full_name}}
+        <div class="__img">
+            <img [src]="post?.header_img" alt="">
+        </div>
+        <div class="__container">
+            <div class="__title">{{post?.title}}</div>
+            <div class="__author">
+                <img [src]="post?.author.profile_img" alt="">
+                <div>
+                    {{post?.author.full_name}}
+                </div>
             </div>
+            <div class="__category">Category : <div class="__item">{{post?.category.title}} </div>
+            </div>
+            <div class="__tags">
+                Tags :<div class="tag" *ngFor="let tag of post?.tags"> {{ tag.title}} </div>
+            </div>
+            <div class="__date">{{post?.created_at |date:'mediumDate'}}</div>
         </div>
-        <div class="__category">Category : <div class="__item">{{post?.category.title}} </div>
-        </div>
-        <div class="__tags">
-            Tags :<div class="tag" *ngFor="let tag of post?.tags"> {{ tag.title}} </div>
-        </div>
-        <div class="__date">{{post?.created_at |date:'mediumDate'}}</div>
-      </div>
+    </div>
+    <div class="post_content" [innerHTML]="post?.description">
+    </div>
+</div>
 
-        <div class="post_content" [innerHTML]="post?.description">
-        </div>
-    </div>
-    <div class="__img">
-        <img [src]="post?.header_img" alt="">
-    </div>
+<div class="__right-side">
+    <div class="__header">Related Post By Tags</div>
+    <ul>
+        <li *ngFor="let relatedPost of relatedPosts" [routerLink]="['/posts/detail',relatedPost._id]">
+            <div class="__item">
+                <img [src]="relatedPost.header_img" alt="">
+            </div>
+            <div class="__title">
+                {{relatedPost.title}}
+            </div>
+        </li>
+    </ul>
 </div>

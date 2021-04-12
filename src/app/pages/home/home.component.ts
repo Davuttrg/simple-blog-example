@@ -21,35 +21,48 @@ export class HomeComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.dataService.getHomeSettings().subscribe((homeData: HomeSettings[]) => {
+    this.getHomeSettings().subscribe((homeData: HomeSettings[]) => {
       this.homeSettings = homeData[0];
-      this.dataService
-        .getAllAuthor()
-        .subscribe((authors) => (this.authors = authors));
-      this.dataService.getAllPost().subscribe((posts) => {
+
+      this.getAllAuthor().subscribe((authors) => (this.authors = authors));
+
+      this.getAllPost().subscribe((posts) => {
         this.posts = posts;
         this.fillSections();
       });
     });
   }
 
+  getHomeSettings() {
+    return this.dataService.getHomeSettings();
+  }
+  getAllAuthor() {
+    return this.dataService.getAllAuthor();
+  }
+  getAllPost() {
+    return this.dataService.getAllPost();
+  }
+
   fillSections() {
     this.posts.forEach((post) => {
       switch (post.category._id) {
         case this.homeSettings.sections.section1.postlist:
-          this.sections[0].posts.push(post);
+          if (this.sections[0].posts.length < 3)
+            this.sections[0].posts.push(post);
           this.sections[0].title
             ? ''
             : (this.sections[0].title = post.category.title);
           break;
         case this.homeSettings.sections.section2.postlist:
-          this.sections[1].posts.push(post);
+          if (this.sections[1].posts.length < 3)
+            this.sections[1].posts.push(post);
           this.sections[1].title
             ? ''
             : (this.sections[1].title = post.category.title);
           break;
         case this.homeSettings.sections.section3.postlist:
-          this.sections[2].posts.push(post);
+          if (this.sections[2].posts.length < 3)
+            this.sections[2].posts.push(post);
           this.sections[2].title
             ? ''
             : (this.sections[2].title = post.category.title);

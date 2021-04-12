@@ -4,17 +4,16 @@
   padding: 0;
   outline: none;
 }
-
-:root {
-  --primary: #00704a;
-  --secondary: #005135;
+img{
+  width: 100%;
 }
+
+$width100:100% !important;
 
 html,
 body {
   height: 100%;
   font-family: "Lato", sans-serif;
-  font-size: 14px;
   color: #333;
 }
 ul {
@@ -25,6 +24,78 @@ ul {
   color: white;
   background-color: #90b9ab;
   margin: 0 0.5rem;
-  padding: 0 0.4rem;
+  padding: 0 0.4rem 0.2rem 0.4rem;
   border-radius: 10px;
+}
+
+/******************************************************
+                      ** Responsive **
+/******************************************************/
+
+@media (max-width: 768px) {
+  html,
+  body {
+    font-size: 0.8rem;
+  }
+  app-home {
+    flex-direction: column;
+    .__posts,
+    .__authors {
+      width: $width100;
+    }
+  }
+  app-navigator {
+    .navbar {
+      .__nav {
+        .__content {
+          ul {
+            li {
+              margin: 0 0.3rem !important;
+            }
+          }
+        }
+      }
+    }
+  }
+  app-root {
+    .footer {
+      .content {
+        width: 100%;
+        flex-direction: column;
+        .contact {
+          align-self: center;
+          margin-top: 2rem;
+        }
+      }
+    }
+  }
+  app-details {
+    flex-direction: column;
+    .__left-side {
+      width: $width100;
+      .__text {
+        flex-direction: column;
+        .__img {
+          width: $width100;
+          margin-bottom: 1rem !important;
+        }
+        .__container {
+          height: auto !important;
+          margin-bottom: 3rem;
+          margin-left: unset !important;
+          width: $width100;
+          .__title {
+            margin-bottom: 1rem !important;
+          }
+        }
+      }
+    }
+    .__right-side {
+      margin-top: 2rem;
+      width: $width100;
+      ul {
+        border-left: none !important;
+      }
+    }
+  }
 }

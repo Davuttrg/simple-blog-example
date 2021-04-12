@@ -15,7 +15,7 @@ export class DataService {
   //--------------Post
   getAllPost() {
     return this.http.get<Post[]>(
-      `${environment.api_url}/bucket/${environment.PostBucketId}/data?relation=category&relation=tags`
+      `${environment.api_url}/bucket/${environment.PostBucketId}/data?relation=category&relation=tags&sort:{"_id":-1}`
     );
   }
   getPostById(id) {
@@ -25,31 +25,31 @@ export class DataService {
   }
   getPostsByCategoryId(id) {
     return this.http.get<Post[]>(
-      `${environment.api_url}/bucket/${environment.PostBucketId}/data?relation=tags&filter={"category":"${id}"}`
+      `${environment.api_url}/bucket/${environment.PostBucketId}/data?relation=tags&filter={"category":"${id}"}&sort:{"_id":-1}`
     );
   }
   getPostsByAuthor(id) {
     return this.http.get<Post[]>(
-      `${environment.api_url}/bucket/${environment.PostBucketId}/data?relation=tags&filter={"author":"${id}"}`
+      `${environment.api_url}/bucket/${environment.PostBucketId}/data?relation=tags&filter={"author":"${id}"}&sort:{"_id":-1}`
+    );
+  }
+  getPostsByRelatedTag(tags: [], id) {
+    return this.http.get<Post[]>(
+      `${environment.api_url}/bucket/${environment.PostBucketId}/data?relation=tags&filter={"tags":{"$in":${tags}},"_id":{"$ne":"${id}"}}&limit=5&sort:{"_id":-1}`
     );
   }
 
   //--------------Category
   getAllCategory() {
     return this.http.get<Category[]>(
-      `${environment.api_url}/bucket/${environment.CategoryBucketId}/data`
-    );
-  }
-  getCategoryById(id) {
-    return this.http.get<Category>(
-      `${environment.api_url}/bucket/${environment.CategoryBucketId}/data/${id}`
+      `${environment.api_url}/bucket/${environment.CategoryBucketId}/data?sort:{"_id":-1}`
     );
   }
 
   //--------------Author
   getAllAuthor() {
     return this.http.get<Author[]>(
-      `${environment.api_url}/bucket/${environment.AuthorBucketId}/data`
+      `${environment.api_url}/bucket/${environment.AuthorBucketId}/data?sort:{"_id":-1}`
     );
   }
   getAuthorById(id) {
