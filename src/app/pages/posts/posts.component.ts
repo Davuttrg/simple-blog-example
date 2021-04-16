@@ -10,7 +10,7 @@ import { DataService } from './../../data.service';
 })
 export class PostsComponent implements OnInit {
   posts: Post[];
-
+  isProccessing: boolean = true;
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService
@@ -18,10 +18,12 @@ export class PostsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((routeParams) => {
+      this.isProccessing = true;;
       this.dataService
         .getPostsByCategoryId(routeParams.id)
         .subscribe((data) => {
           this.posts = data;
+          this.isProccessing = false;
         });
     });
   }

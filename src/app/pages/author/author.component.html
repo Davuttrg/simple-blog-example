@@ -1,4 +1,5 @@
-<div class="content">
+<div class="spinner" *ngIf="isProccessing"></div>
+<div class="content" *ngIf="!isProccessing">
     <img [src]="author?.profile_img" alt="">
     <div class="name">
         {{author?.full_name}}

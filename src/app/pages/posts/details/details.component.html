@@ -1,4 +1,5 @@
-<div class="__left-side">
+<div class="spinner" *ngIf="isProccessing"></div>
+<div class="__left-side" *ngIf="!isProccessing">
     <div class="__text">
         <div class="__img">
             <img [src]="post?.header_img" alt="">
@@ -23,7 +24,7 @@
     </div>
 </div>
 
-<div class="__right-side">
+<div class="__right-side" *ngIf="!isProccessing">
     <div class="__header">Related Post By Tags</div>
     <ul>
         <li *ngFor="let relatedPost of relatedPosts" [routerLink]="['/posts/detail',relatedPost._id]">

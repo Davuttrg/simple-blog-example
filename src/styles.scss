@@ -4,11 +4,11 @@
   padding: 0;
   outline: none;
 }
-img{
+img {
   width: 100%;
 }
 
-$width100:100% !important;
+$width100: 100% !important;
 
 html,
 body {
@@ -97,5 +97,24 @@ ul {
         border-left: none !important;
       }
     }
+  }
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 10px solid;
+  border-color: #046f3d #00422357;
+  animation: spin 1s infinite;
+  z-index: 1000;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }

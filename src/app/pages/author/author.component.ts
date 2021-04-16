@@ -12,6 +12,7 @@ import { Author } from './../../Interfaces/Author';
 export class AuthorComponent implements OnInit {
   author: Author;
   posts: Post[];
+  isProccessing: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,12 +20,14 @@ export class AuthorComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getAuthor(this.route.snapshot.params['id']).then(
-      (data) => (this.author = data)
-    );
-    this.getAuthorPosts(this.route.snapshot.params['id']).then(
-      (data) => (this.posts = data)
-    );
+    this.route.params.subscribe((routeParams) => {
+      this.isProccessing = true;
+      this.getAuthor(routeParams.id).then((data) => {
+        this.author = data;
+        this.isProccessing = false;
+      });
+      this.getAuthorPosts(routeParams.id).then((data) => (this.posts = data));
+    });
   }
   getAuthor(id) {
     return this.dataService.getAuthorById(id).toPromise();

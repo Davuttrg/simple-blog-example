@@ -2,6 +2,7 @@
   display: flex;
   .__posts {
     width: 80%;
+    position: relative;
     .__section-header {
       font-size: 24px;
       font-weight: 600;
@@ -19,6 +20,7 @@
   .__authors {
     width: 20%;
     height: 100%;
+    position: relative;
     //  margin-top: 5rem;
     //  margin: auto;
     .__header {

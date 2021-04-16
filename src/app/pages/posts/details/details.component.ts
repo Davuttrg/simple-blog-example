@@ -11,6 +11,7 @@ import { DataService } from './../../../data.service';
 export class DetailsComponent implements OnInit {
   post: Post;
   relatedPosts: Post[];
+  isProccessing: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -18,21 +19,28 @@ export class DetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getPost(this.route.snapshot.params['id']).subscribe((post) => {
-      this.post = post;
-      let tagArr = [];
-      this.post.tags.forEach((tag) => {
-        tagArr.push(tag._id);
+    this.route.params.subscribe((routeParams) => {
+      this.isProccessing = true;
+      this.getPost(routeParams.id).subscribe((post) => {
+        this.post = post;
+        let tagArr = [];
+        this.post.tags.forEach((tag) => {
+          tagArr.push(tag._id);
+        });
+        this.getPostsByRelatedTag(
+          JSON.stringify(tagArr),
+          this.post._id
+        ).subscribe((posts) => {
+          this.relatedPosts = posts;
+          this.isProccessing = false;
+        });
       });
-      this.getPostsByRelatedTag(JSON.stringify(tagArr),this.post._id).subscribe(
-        (posts) => (this.relatedPosts = posts)
-      );
     });
   }
   getPost(id) {
     return this.dataService.getPostById(id);
   }
-  getPostsByRelatedTag(tags,id) {
-    return this.dataService.getPostsByRelatedTag(tags,id);
+  getPostsByRelatedTag(tags, id) {
+    return this.dataService.getPostsByRelatedTag(tags, id);
   }
 }

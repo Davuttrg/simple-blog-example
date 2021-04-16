@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   homeSettings: HomeSettings;
   posts: Post[];
   authors: Author[];
+  isProccessing: boolean = true;
   sections = [
     { posts: [], title: '' },
     { posts: [], title: '' },
@@ -27,6 +28,7 @@ export class HomeComponent implements OnInit {
       this.getAllAuthor().subscribe((authors) => (this.authors = authors));
 
       this.getAllPost().subscribe((posts) => {
+        this.isProccessing = false;
         this.posts = posts;
         this.fillSections();
       });
@@ -46,21 +48,21 @@ export class HomeComponent implements OnInit {
   fillSections() {
     this.posts.forEach((post) => {
       switch (post.category._id) {
-        case this.homeSettings.sections.section1.postlist:
+        case this.homeSettings.section1:
           if (this.sections[0].posts.length < 3)
             this.sections[0].posts.push(post);
           this.sections[0].title
             ? ''
             : (this.sections[0].title = post.category.title);
           break;
-        case this.homeSettings.sections.section2.postlist:
+        case this.homeSettings.section2:
           if (this.sections[1].posts.length < 3)
             this.sections[1].posts.push(post);
           this.sections[1].title
             ? ''
             : (this.sections[1].title = post.category.title);
           break;
-        case this.homeSettings.sections.section3.postlist:
+        case this.homeSettings.section3:
           if (this.sections[2].posts.length < 3)
             this.sections[2].posts.push(post);
           this.sections[2].title

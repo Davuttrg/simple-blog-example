@@ -1,4 +1,5 @@
-<div class="__posts">
+<div class="spinner" *ngIf="isProccessing"></div>
+<div class="__posts" *ngIf="!isProccessing">
 
     <div *ngFor="let section of sections">
         <div class="__section-header">{{section.title |uppercase}}</div>
@@ -7,7 +8,7 @@
         </div>
     </div>
 </div>
-<div class="__authors">
+<div *ngIf="!isProccessing" class="__authors">
     <div class="__header">AUTHORS</div>
     <ul>
         <li *ngFor="let author of authors" [routerLink]="['author',author._id]">
