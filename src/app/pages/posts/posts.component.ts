@@ -18,7 +18,7 @@ export class PostsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((routeParams) => {
-      this.isProccessing = true;;
+      this.isProccessing = true;
       this.dataService
         .getPostsByCategoryId(routeParams.id)
         .subscribe((data) => {

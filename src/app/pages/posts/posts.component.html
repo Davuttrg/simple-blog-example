@@ -1,4 +1,4 @@
 <div class="content">
    <div class="spinner" *ngIf="isProccessing"></div>
-   <app-post-card [posts]="posts"></app-post-card>
+   <app-post-card  *ngIf="!isProccessing" [posts]="posts"></app-post-card>
 </div>

@@ -2,8 +2,8 @@
 <div class="__posts" *ngIf="!isProccessing">
 
     <div *ngFor="let section of sections">
-        <div class="__section-header">{{section.title |uppercase}}</div>
-        <div class="__section">
+        <div class="__section-header" *ngIf="section.title">{{section.title |uppercase}}</div>
+        <div class="__section" *ngIf="section.posts">
             <app-post-card [posts]="section.posts"></app-post-card>
         </div>
     </div>
